@@ -32,7 +32,6 @@ function PlayerComponent({player, playerDeck, setPlayerDeck, setPlayedCard, game
                         <div>Player: {user[player].username}</div>
                         <div>Player Wins: {user[player].wins}</div>
                     </div>
-
                     :
                     player === "playerOne" ?
                     <div>Player: Player One</div>

@@ -141,7 +141,6 @@ function MainComponent(){
   useEffect(() => {
     if (user && user.PlayerOne){
       let data = user.PlayerOne
-      console.log(data)
       setPlayerOneInfo(data)
     }
     if (user && user.PlayerTwo){
@@ -149,8 +148,7 @@ function MainComponent(){
       setPlayerTwoInfo(data)
     }
   }, [user, playerOneInfo, playerTwoInfo]);
-  console.log(user, playerOneInfo, playerTwoInfo)
-  // console.log(playerOneDeck, playerTwoDeck, middleDeck)
+
   return (
     <div className="MainPageBackground">
       <div className="Universal_Controls_Area">

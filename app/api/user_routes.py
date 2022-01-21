@@ -16,10 +16,8 @@ def get_users_for_game():
     opponentId = request.args.get('opponent',type=int , default='')
     player = User.query.get(playerId)
     opponent = User.query.get(opponentId)
-
     return {"player":player, "opponent":opponent }
 
-    #/user?player=id&opponent=id
 
 @user_routes.route('/', methods=['PUT'])
 def record_game_wins():

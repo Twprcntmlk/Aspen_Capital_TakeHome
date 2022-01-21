@@ -17,7 +17,6 @@ export const get_all_user = () => async (dispatch) => {
     const response = await fetch(`/api/users/`)
     if (response.ok){
         const data = await response.json();
-        //note: should return {"users": [user.to_dict() for user in users]}
         dispatch(getUserAction(data.users))
     } else {
         return {}
@@ -28,7 +27,6 @@ export const get_users_for_game= () => async (dispatch) => {
     const response = await fetch(`/api/users/?player=${playerId}&opponent=${opponentId}`)
     if (response.ok){
         const data = await response.json();
-        //note: should return {"users": [user.to_dict() for user in users]}
         dispatch(getUserAction(data.users))
     } else {
         return {}

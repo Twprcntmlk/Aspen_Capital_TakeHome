@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavigationBar from "./components/NavigationBar/NavigationBar";
-// import ProtectedRoute from "./components/auth/ProtectedRoute";
 import MainComponent from "./components/MainComponent"
 
 
@@ -14,7 +13,7 @@ function App() {
     <BrowserRouter>
       <NavigationBar />
       <Switch>
-        <Route path="/loginPlayerOne" exact={true}>
+        <Route path="/loginPlayerOne" exact={true}> 
           <LoginForm playertype={"Player One"}/>
         </Route>
         <Route path="/loginPlayerTwo" exact={true}>

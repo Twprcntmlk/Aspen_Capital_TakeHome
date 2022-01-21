@@ -13,8 +13,6 @@ const removeUser = () => ({
 })
 
 // thunks
-
-
 export const login = (username, password, player) => async (dispatch) => {
     const response = await fetch('/api/auth/login', {
         method: 'POST',
@@ -31,7 +29,6 @@ export const login = (username, password, player) => async (dispatch) => {
     if (data.errors) {
         return data;
     }
-    console.log(data)
     dispatch(setUser(data))
     return {}
 }
@@ -66,7 +63,6 @@ export const signUp = (username, password) => async (dispatch) => {
 }
 
 
-
 const initialState = {users: {playerOne: null, playerOne: null}}
 let newState;
 export default function reducer(state = initialState, action) {
@@ -92,5 +88,3 @@ export default function reducer(state = initialState, action) {
             return state;
     }
 }
-// {"username":"player1", "wins":0, "hashed_password":hash_password},
-// {"username":"player2", "wins":0, "hashed_password":hash_password},
