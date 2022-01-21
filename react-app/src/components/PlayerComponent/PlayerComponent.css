@@ -1,0 +1,34 @@
+#PlayerBackground{
+    padding: 1rem;
+    background-color:#F1C40F;
+    font-weight: bold;
+}
+
+#PlayerDeck > div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+
+#PlayHand{
+    display: flex;
+    justify-content: center;
+}
+
+#Player_Area{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cardImg{
+    height:50%;
+    width:50%;
+}
+
+.PlayerLogin_Navlink{
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: #1ABC9C;
+}

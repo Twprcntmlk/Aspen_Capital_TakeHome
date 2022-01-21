@@ -1,0 +1,56 @@
+*{
+  box-sizing: border-box;
+  margin: 0px;
+
+}
+
+.Navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1ABC9C;
+  width: 100vw;
+  padding-right: 0, 10px;
+  height: 75px;
+  font-family: Righteous, fantasy;
+}
+
+.Navbar_NavLink{
+  text-decoration: none;
+}
+.Brand_Title{
+  display: flex;
+  flex-direction:row;
+  margin:1.75rem;
+  font-size: 2rem;
+  text-decoration: none;
+}
+
+.Brand_Title_part1 {
+  color:#F1C40F;
+}
+.Brand_Title_part2 {
+  color:#F39C12;
+  font-weight: bold;
+}
+
+.Navbar_Login_SignUp_Container{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin:1.75rem;
+}
+
+.Navbar_Login_SignUp_Container_Com{
+  margin:1rem;
+  font-size: 1.2em;
+}
+.Navbar_Login_SignUp_Container_Navlink{
+  text-decoration: none;
+  color:#F1C40F;
+}
+
+.Navbar_Login_SignUp_Container_Com:hover{
+  text-decoration: none;
+  color:#F39C12;
+}

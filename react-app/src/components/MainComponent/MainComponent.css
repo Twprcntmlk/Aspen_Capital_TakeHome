@@ -1,0 +1,66 @@
+.Universal_Controls_Area{
+    display:flex;
+    justify-content:space-around;
+    margin: 2rem 1rem 2rem 1rem;
+
+}
+
+#gameStatus{
+    font-size: 2rem;
+    color:rgb(233, 87, 3);
+    font-weight:bold;
+    text-align: center;
+}
+.Play_Area{
+    display:flex;
+    justify-content:space-between;
+    margin-right:5rem;
+    margin-left:5rem;
+}
+
+#playarea{
+    display:flex;
+    justify-content:center;
+}
+
+#playarea > div{
+    padding: 1rem
+}
+
+#playstatus{
+    margin:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.playstatus_comp{
+    font-weight:bold;
+    min-height: 30px;
+    border-style: 3px;
+}
+
+button{
+    border: none;
+    border-radius: 5px;
+    font-family: Oxygen;
+    padding: 10px 15px;
+    color:#ecf0f1;
+    background-color:#3498DB;
+}
+
+button:hover{
+    border: none;
+    border-radius: 5px;
+    font-family: Oxygen;
+    padding: 10px 15px;
+    background-color:#F39C12;
+}
+
+.card_comp{
+    font-size: 2rem;
+    font-weight:bold;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
