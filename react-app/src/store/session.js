@@ -63,7 +63,7 @@ export const signUp = (username, password) => async (dispatch) => {
 }
 
 
-const initialState = {users: {playerOne: null, playerOne: null}}
+const initialState = {users: {playerOne: null, playerTwo: null}}
 let newState;
 export default function reducer(state = initialState, action) {
     switch (action.type) {

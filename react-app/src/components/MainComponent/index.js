@@ -111,7 +111,7 @@ function MainComponent(){
   }, [currentDeck]);
 
   useEffect(() => {
-    if (playerOnePlayed && playerTwoPlayed && gameStatus===true){
+    if (playerOnePlayed===true && playerTwoPlayed===true && gameStatus===true){
       cardWinner()
     }
 

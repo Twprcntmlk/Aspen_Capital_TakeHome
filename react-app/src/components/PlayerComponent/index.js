@@ -10,13 +10,14 @@ function PlayerComponent({player, playerDeck, setPlayerDeck, setPlayedCard, game
 
     const PlayTopCard = () => {
 
-        if (playerPlayed ===false && gameStatus === true){
+        if (playerPlayed === false && gameStatus === true){
             let CopycurrentPlayerDeck = playerDeck
             const topcard = CopycurrentPlayerDeck.shift()
             setPlayerDeck(CopycurrentPlayerDeck)
             setPlayedCard(topcard)
             setPlayerPlayed(true)
-        } else{
+        }
+        else if(gameStatus === false) {
             setError(error.concat(["Game has Not Started"]))
         }
     }
