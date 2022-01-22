@@ -2,11 +2,14 @@ import React, {useEffect, useState} from 'react';
 import { NavLink } from 'react-router-dom';
 import {useDispatch, useSelector } from 'react-redux';
 import PlayerComponent from "../PlayerComponent"
+import { record_game_wins } from "../../store/users";
 
 import './MainComponent.css';
 
 function MainComponent(){
+  const dispatch = useDispatch();
   const user = useSelector(state => state.session.users)
+
 
   const [playerOneInfo, setPlayerOneInfo] = useState({})
   const [playerTwoInfo, setPlayerTwoInfo] = useState({})
@@ -59,14 +62,20 @@ function MainComponent(){
 
   const dealDeck = () => {
     let copyOfDeck = currentDeck
-    setPlayerOneDeck(copyOfDeck.slice(0,26))
-    setPlayerTwoDeck(copyOfDeck.slice(26,52))
+    // setPlayerOneDeck(copyOfDeck.slice(0,26))
+    // setPlayerTwoDeck(copyOfDeck.slice(26,52))
+    setPlayerOneDeck(copyOfDeck.slice(0,2))
+    setPlayerTwoDeck(copyOfDeck.slice(2,3))
     setCurrentDeck([])
   }
 
   const gameStart = () => {
-    createDeck()
-    setGameStatus(true)
+    if (user.playerTwo && user.playerOne){
+      createDeck()
+      setGameStatus(true)
+    }
+
+
   }
 
   const cardWinner = () => {
@@ -74,7 +83,7 @@ function MainComponent(){
     let player1card = playerOnePlayedCard
     let player2card = playerTwoPlayedCard
     let cardToaddBack = [player1card, player2card]
-    if(playerOnePlayed && playerTwoPlayed){
+    if(playerOnePlayed && playerTwoPlayed && playerOneDeck.length>0 && playerTwoDeck.length>0){
       if (+values[player1card.Value] > +values[player2card.Value]){
         let playerOneDeckcopy = playerOneDeck
         setPlayerOneDeck(playerOneDeckcopy.concat(cardToaddBack).concat(middleDeck))
@@ -99,10 +108,10 @@ function MainComponent(){
     setPlayerTwoPlayed(false)
   }
 
-  // const nextHand = () => {
-  //   setPlayerOnePlayedCard({})
-  //   setPlayerTwoPlayedCard({})
-  // }
+  const updateWinner = async (playerId) => {
+    await dispatch(record_game_wins(playerId));
+
+  };
 
   useEffect(() => {
       if (currentDeck.length > 0){
@@ -118,33 +127,33 @@ function MainComponent(){
     if (playerOneDeck.length===0 && gameStatus===true){
       setGameStatus(false)
       setMiddleDeck([])
-      playerOneDeck([])
-      playerTwoDeck([])
-      playerOnePlayedCard([])
-      playerTwoPlayedCard([])
-
+      setPlayerOneDeck([])
+      setPlayerTwoDeck([])
+      setPlayerOnePlayedCard([])
+      setPlayerTwoPlayedCard([])
+      updateWinner(user.playerOne.id)
     }
 
     if (playerTwoDeck.length===0 && gameStatus===true ){
       setGameStatus(false)
       setMiddleDeck([])
-      playerOneDeck([])
-      playerTwoDeck([])
-      playerOnePlayedCard([])
-      playerTwoPlayedCard([])
-
+      setPlayerOneDeck([])
+      setPlayerTwoDeck([])
+      setPlayerOnePlayedCard([])
+      setPlayerTwoPlayedCard([])
+      updateWinner(user.playerTwo.id)
     }
 
   }, [playerOnePlayedCard, playerTwoPlayedCard]);
 
 
   useEffect(() => {
-    if (user && user.PlayerOne){
-      let data = user.PlayerOne
+    if (user && user.playerOne){
+      let data = user.playerOne
       setPlayerOneInfo(data)
     }
-    if (user && user.PlayerTwo){
-      let data = user.PlayerTwo
+    if (user && user.playerTwo){
+      let data = user.playerTwo
       setPlayerTwoInfo(data)
     }
   }, [user, playerOneInfo, playerTwoInfo]);

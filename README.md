@@ -8,7 +8,6 @@ pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.t
 ```
 2. In still in the "/Aspen Capital" Create a **.env** file based on the **.env.example**
 
-
 3. In still in the "/Aspen Capital", in your bash input:
 ```bash
 pipenv shell

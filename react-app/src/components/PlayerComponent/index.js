@@ -7,6 +7,8 @@ import './PlayerComponent.css';
 
 function PlayerComponent({player, playerDeck, setPlayerDeck, setPlayedCard, gameStatus, setError, error, playerPlayed, setPlayerPlayed, playerInfo}){
     const user = useSelector(state => state.session.users)
+    const userInfo = useSelector(state => state.user.users)
+    const [winsCount, setWinsCount] = useState(0)
 
     const PlayTopCard = () => {
 
@@ -21,17 +23,31 @@ function PlayerComponent({player, playerDeck, setPlayerDeck, setPlayedCard, game
             setError(error.concat(["Game has Not Started"]))
         }
     }
+    console.log(playerInfo)
 
+    useEffect(() => {
+        if (userInfo && playerInfo && playerInfo['id'] ){
+            let playerId = playerInfo['id']
+            let updatedwin = userInfo[playerId]
+            if (updatedwin){
+                setWinsCount(updatedwin["wins:"])
 
+            }
+        }
+        else if (user && user[player]) {
+            setWinsCount(user[player]["wins:"])
+        }
+
+    },[user, userInfo, player, winsCount])
 
     return (
         <div id="PlayerBackground">
             <div id="Player_Area">
                 <div id="PlayerDeck">
-                    {user[player] ?
+                    {user && user[player] ?
                     <div>
                         <div>Player: {user[player].username}</div>
-                        <div>Player Wins: {user[player].wins}</div>
+                        <div>Player Wins: {winsCount}</div>
                     </div>
                     :
                     player === "playerOne" ?

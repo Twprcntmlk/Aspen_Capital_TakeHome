@@ -23,18 +23,8 @@ export const get_all_user = () => async (dispatch) => {
     }
 }
 
-export const get_users_for_game= () => async (dispatch) => {
-    const response = await fetch(`/api/users/?player=${playerId}&opponent=${opponentId}`)
-    if (response.ok){
-        const data = await response.json();
-        dispatch(getUserAction(data.users))
-    } else {
-        return {}
-    }
-}
-
 export const record_game_wins = (playerId) => async (dispatch) => {
-    const response = await fetch(`/api/users`, {
+    const response = await fetch(`/api/users/`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -42,11 +32,18 @@ export const record_game_wins = (playerId) => async (dispatch) => {
         body: JSON.stringify({playerId})
     })
     const data = await response.json();
-    dispatch(editUserAction(data.user))
+    console.log(data)
+    dispatch(editUserAction(data))
 
 }
 
 
+// Normalizer
+const NormalizeUser= (users) => {
+    const normUser = {}
+    users.forEach(user => { normUser[user.id] = user})
+    return normUser
+}
 
 //Reducer
 const initialState = { users: {} }
