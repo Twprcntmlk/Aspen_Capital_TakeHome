@@ -30,6 +30,18 @@ pipenv lock -r > requirements.txt
 ``` bash
 npm start
 ```
+## Testing The Game:
+
+The game will not start without Users:
+all the players are:
+
+username: player1 -6
+password: password
+
+but you can make you own user
+
+There are some alerts and UI elements I should add to make the game look friendly
+but the functionality is all their for the 4 hours I had to work on it.
 
 ## The Experience / Overview
 Fun Project, I thought this was gonna be more like create class Object leetcode thing when it was mentioned
